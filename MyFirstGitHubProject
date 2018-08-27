@@ -1,0 +1,49 @@
+public class Learner1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        double fee = 0;
+        double annual = 0;
+        int count = 0;
+        double avgSchoolFee =0;
+        double movingTotal = 0;
+        int grade;
+        String name = null;
+        
+        System.out.println("Enter the name of the learner");
+        name = input.next();
+        
+        while (!name.equals("ABCD"))
+        {
+        System.out.println("Enter the grade of the learner from 1 - 12");
+        grade = input.nextInt();
+        
+        if (grade < 1)
+        { System.out.println("invalid grade, cant be less than 1");}
+        else if (grade > 12)
+        { System.out.println("Invalid grade, cant be more than 12");}
+        else 
+            fee = 14 + ((grade - 1)* 4.50);
+        annual = fee * 9;
+        System.out.println("Learner name is " + name);
+        
+        if (grade < 12 && grade > 1 )
+        { System.out.println(" The monthly fee is R" + fee);
+        System.out.println("The annual fee for February to November excl july is R" + annual);}
+        else
+            System.out.println( "Grade entered was invalid to calculate");
+        
+        movingTotal = movingTotal + annual;
+        count = count + 1;
+        System.out.println("Enter the name of the learner or ABCD to stop capturing");
+        name = input.next();
+        }
+        
+        avgSchoolFee = movingTotal / count;
+        System.out.println("The average School Fee is R" + avgSchoolFee);
+    }
+    
+}
